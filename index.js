@@ -36,3 +36,41 @@ const headerLogoConatiner = document.querySelector('.header__logo-container')
 headerLogoConatiner.addEventListener('click', () => {
   location.href = 'index.html'
 })
+
+
+function submitForm(e) {
+  e.preventDefault();
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  // Create email body
+  const body = `
+    Name: ${name}
+    Email: ${email}
+    Message: ${message}
+  `;
+
+  // Create email subject
+  const subject = 'Hi! Bukunmi';
+
+  // Construct email link
+  const mailtoLink = `mailto:bukunmi.akinyemi.enoch@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Open the mailto link
+  window.location.href = mailtoLink;
+}
+
+const Form = document.querySelector('.contact__form')
+
+Form.addEventListener('submit', submitForm)
+
+function getCurrentYear() {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  return currentYear;
+}
+const year = document.getElementById('year');
+
+year.textContent = getCurrentYear();
